@@ -1,2 +1,2 @@
-- В aws.txt собраны все CIDR полученные с официального списка AWS: https://ip-ranges.amazonaws.com/ip-ranges.json
+- В aws.txt собраны все CIDR полученные с официального списка AWS: https://ip-ranges.amazonaws.com/ip-ranges.json **(Для разблокировки Battlefield 6 и прочих игр стоит вводить именно этот список в запрет!)**
 - Для hetzner.txt я использовал данные из репозитория: https://github.com/Pymmdrza/Datacenter_List_DataBase_IP/blob/mainx/Hetzner/CIDR.txt
