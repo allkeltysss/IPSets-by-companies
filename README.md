@@ -1,1 +1,2 @@
-В aws.txt собраны все CIDR полученные с официального списка AWS: https://ip-ranges.amazonaws.com/ip-ranges.json
+- В aws.txt собраны все CIDR полученные с официального списка AWS: https://ip-ranges.amazonaws.com/ip-ranges.json
+- Для hetzner.txt я использовал данные из репозитория: https://github.com/Pymmdrza/Datacenter_List_DataBase_IP/blob/mainx/Hetzner/CIDR.txt
