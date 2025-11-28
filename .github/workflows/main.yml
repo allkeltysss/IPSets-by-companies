@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          run: pip install requests
+          pip install requests
 
       - name: Run AWS update script
         run: python utilities/get_aws_ipset.py
