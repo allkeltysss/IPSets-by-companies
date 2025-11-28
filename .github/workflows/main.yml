@@ -1,0 +1,47 @@
+name: Update AWS Ranges
+
+on:
+  schedule:
+    # Запуск каждый день в 03:00 UTC (можете поменять время)
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Кнопка ручного запуска
+
+permissions:
+  contents: write
+
+jobs:
+  update-list:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install requests; fi
+
+      - name: Run AWS update script
+        run: python utilities/get_aws_ipset.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Добавляем файл aws.txt
+          git add aws.txt
+          
+          # Проверяем, изменилось ли что-то
+          if git diff-index --quiet HEAD; then
+            echo "IP адреса не изменились. Коммит не требуется."
+          else
+            git commit -m "Автоматическое обновление aws.txt [skip ci]"
+            git push
+          fi
